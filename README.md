@@ -40,6 +40,8 @@ The training process includes:
 
 The final model achieved approximately **69.56% test accuracy**.
 
+The trained model files are stored using **Git LFS (Git Large File Storage)** because of their size.
+
 ## Technologies Used
 
 - Python
@@ -50,6 +52,7 @@ The final model achieved approximately **69.56% test accuracy**.
 - HTML
 - CSS
 - SQLite
+- Git LFS
 
 ## Features
 
@@ -78,6 +81,7 @@ Blood-Cell-Classification/
 ├── requirements.txt
 ├── README.md
 ├── .gitignore
+├── .gitattributes
 │
 ├── model/
 │   ├── best_stage1_model.keras
@@ -101,32 +105,80 @@ Blood-Cell-Classification/
 
 ## How to Run
 
-Install the required libraries:
+### 1. Clone the Repository
+
+Git LFS is used for the trained model files. Therefore, clone the repository using Git:
+
+```bash
+git clone https://github.com/explorer2131/Blood-Cell-Classification.git
+```
+
+Then enter the project folder:
+
+```bash
+cd Blood-Cell-Classification
+```
+
+### 2. Install Git LFS
+
+If Git LFS is not already installed, install it first.
+
+Then run:
+
+```bash
+git lfs install
+```
+
+### 3. Download the Model Files
+
+Run:
+
+```bash
+git lfs pull
+```
+
+This downloads the actual `.keras` model files tracked by Git LFS.
+
+### 4. Install Python Libraries
+
+Run:
 
 ```bash
 pip install -r requirements.txt
 ```
 
-Run the Flask application:
+### 5. Run the Flask Application
+
+Run:
 
 ```bash
 python app.py
 ```
 
-Then open the local address displayed in the terminal in a web browser.
+The terminal will display a local address such as:
 
-Upload a blood cell image to view its predicted class and confidence score.
+```text
+http://127.0.0.1:5000
+```
+
+Open this address in a web browser.
+
+Upload a blood cell image to view the predicted class and confidence score.
 
 ## Prediction History
 
-Previous prediction details are stored in a local SQLite database. The database is created automatically when the application is run and is not included in this repository.
+Previous prediction details are stored in a local SQLite database.
+
+The database is created automatically when the Flask application is started and is not included in this repository.
 
 ## Important Notes
 
 - The dataset is not included because of its large size.
-- The local SQLite database is not included.
+- The SQLite database is not included in the repository.
 - User-uploaded images are not stored in the repository.
-- The trained model files are included for prediction.
+- The trained model files are stored using Git LFS.
+- **Do not use GitHub's "Download ZIP" option to run the project when Git LFS model files are required.** Use `git clone` followed by `git lfs pull` so that the actual model files are downloaded correctly.
+- The dataset is required only if the training or evaluation scripts are being executed. It is not required to run the Flask application for prediction.
 
 ## Future Scope
 
